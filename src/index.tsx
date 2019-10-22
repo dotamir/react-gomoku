@@ -9,6 +9,7 @@ import AppContainer from './containers/App/AppContainer';
 import * as serviceWorker from './serviceWorker';
 import * as reducers from './redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/main.scss';
 
 declare global {
 	interface Window { __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any; }
