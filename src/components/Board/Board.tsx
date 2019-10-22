@@ -35,7 +35,6 @@ const Board: React.FC<{ boardSize: number, winLimit: number }> = ({ boardSize, w
 		}
 	}
 	const won = (sign: number, x: number, y: number) => {
-		// eslint-disable-next-line
 		const range = _.range(-winLimit + 1, winLimit);
     return _.some([
       repeatsLoop(_.map(range, (i) => {
