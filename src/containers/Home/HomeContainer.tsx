@@ -6,9 +6,9 @@ const Home: React.FC = () => {
 	return (
 		<>
 			<Container>
-				<div className="home">
+				<main className="home">
 					<Board boardSize={10} winLimit={5} />
-				</div>
+				</main>
 			</Container>
 		</>
 	);

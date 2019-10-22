@@ -36,11 +36,54 @@ main {
 	margin-top: 1.5rem;
 }
 
-.mark-btn {
+.mark__btn {
+	position: relative;
 	width: 30px;
 	height: 30px;
 	border-radius: 0;
 	border: 1px solid #333;
+
+	&:hover {
+		background-color: rgba(0, 0, 0, .1);
+	}
+
+	&-x {
+		position: relative;
+
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 6px;
+			width: 2px;
+			height: 20px;
+			background-color: red;
+
+			transform: rotate(45deg);
+		}
+		&::before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 6px;
+			width: 2px;
+			height: 20px;
+			background-color: red;
+
+			transform: rotate(-45deg);
+		}
+	}
+
+	&-o {
+		position: absolute;
+		top: 5px;
+		left: 5px;
+		display: block;
+		width: 20px;
+		height: 20px;
+		background-color: skyblue;
+		border-radius: 100%;
+	}
 }
 
 .board {

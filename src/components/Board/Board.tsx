@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
 import Mark from '../Mark/Mark';
-import { repeatsLoop, warnAlert } from '../../utils/helpers';
+import { repeatsLoop, warnAlert, winAlert } from '../../utils/helpers';
 import { X, O } from '../../config/constant';
 import { Row, Col, Button } from 'reactstrap';
 
@@ -21,7 +21,7 @@ const Board: React.FC<{ boardSize: number, winLimit: number }> = ({ boardSize, w
 
 			setInitialized(true);
 		}
-	});
+	}, [boardSize, initialized]);
 
 	const reset = () => {
 		setInitialized(false);
@@ -31,10 +31,12 @@ const Board: React.FC<{ boardSize: number, winLimit: number }> = ({ boardSize, w
 		const whoWon = won(sign, x, y);
 		if (whoWon) {
 			setWinner(sign);
+			winAlert(sign);
 		}
 	}
 	const won = (sign: number, x: number, y: number) => {
-    const range = _.range(-winLimit + 1, winLimit)
+		// eslint-disable-next-line
+		const range = _.range(-winLimit + 1, winLimit);
     return _.some([
       repeatsLoop(_.map(range, (i) => {
         return _.get(board, [x, y - i])
@@ -82,7 +84,6 @@ const Board: React.FC<{ boardSize: number, winLimit: number }> = ({ boardSize, w
 									return (
 										<div key={i} className='board__game-row'>
 											{_.map(y, (x, k: number) => {
-												console.log(board[i][k]);
 												return <Mark key={k} mark={board[i][k]} click={() => {
 													if (winner) {
 														return
@@ -111,9 +112,10 @@ const Board: React.FC<{ boardSize: number, winLimit: number }> = ({ boardSize, w
 								{currentSign === X && <span> X</span>}
 								{currentSign === O && <span> O</span>}
 							</div>
-							<div className='board__sidebar-winner'>
-								{winner && winner}
-							</div>
+							{winner && <div className='board__sidebar-winner'>
+								{winner === X ? 'Player X won' : null}
+								{winner === O ? 'Player O won' : null}
+							</div>}
 							<div className='board__sidebar-options'>
 								<Button color='primary' onClick={reset}>Restart Game</Button>
 							</div>

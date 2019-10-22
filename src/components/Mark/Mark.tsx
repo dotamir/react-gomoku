@@ -5,11 +5,11 @@ import { Button } from 'reactstrap';
 const Mark: React.FC<{ mark: number, click: any }> = ({ mark, click }) => {
 	const xSign = () => {
 		return (
-			<span>X</span>
+			<span className='mark__btn-x' />
 		)
 	}
 	const oSign = () => {
-		return <span>O</span>
+		return <span className='mark__btn-o' />
 	}
 
 	const sign = () => {
@@ -25,7 +25,7 @@ const Mark: React.FC<{ mark: number, click: any }> = ({ mark, click }) => {
 
 	return (
 		<>
-			<Button className='mark-btn' color='link' onClick={() => click()}>{sign()}</Button>
+			<Button className='mark__btn' color='link' onClick={() => click()}>{sign()}</Button>
 		</>
 	)
 }
