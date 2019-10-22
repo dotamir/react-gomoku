@@ -79,22 +79,20 @@ const Board: React.FC<{ boardSize: number, winLimit: number }> = ({ boardSize, w
 				<Row>
 					<Col sm='12' md='8'>
 						<div className='board__game'>
-							<div className={'board ' + currentSign}>
-								{_.map(board, (y, i) => {
-									return (
-										<div key={i} className='board__game-row'>
-											{_.map(y, (x, k: number) => {
-												return <Mark key={k} mark={board[i][k]} click={() => {
-													if (winner) {
-														return
-													}
-													click(i, k);
-												}} />
-											})}
-										</div>
-									)
-								})}
-							</div>
+							{_.map(board, (y, i) => {
+								return (
+									<div key={i} className='board__game-row'>
+										{_.map(y, (_x, k: number) => {
+											return <Mark key={k} mark={board[i][k]} click={() => {
+												if (winner) {
+													return
+												}
+												click(i, k);
+											}} />
+										})}
+									</div>
+								)
+							})}
 						</div>
 					</Col>
 					<Col sm='12' md='4'>
