@@ -1,12 +1,13 @@
 import React from "react";
 import { Container } from 'reactstrap';
+import Board from '../../components/Board/Board';
 
 const Home: React.FC = () => {
 	return (
 		<>
 			<Container>
 				<div className="home">
-					<h1>Home page</h1>
+					<Board boardSize={10} winLimit={5} />
 				</div>
 			</Container>
 		</>
